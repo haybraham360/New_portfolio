@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+/* Night theme is driven by data-theme on <html> (set before paint by the inline theme script). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens — semantic, one name per role, two values (day / night).
+   Components reference these through Tailwind utilities, never raw hex.
+   --------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #f1f4f9;
+  --surface-tint: #eaf1ff;
+  --fg: #0f172a;
+  --fg-muted: #475569;
+  --fg-subtle: #64748b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-on-tint: #1e40af;
+  --btn: #0b1b3a;
+  --btn-hover: #1a2c50;
+  --btn-fg: #ffffff;
+  --line: #e2e8f0;
+  --line-hover: #b8c6dc;
+  --line-strong: #64748b;
+  --success: #15803d;
+  --success-bg: #dcfce7;
+  --warning: #92400e;
+  --warning-bg: #fef3c7;
+  --danger: #b91c1c;
+  --danger-bg: #fee2e2;
+
+  --shadow-raised: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -8px rgb(15 23 42 / 0.12);
+  --shadow-toast: 0 2px 4px rgb(15 23 42 / 0.06), 0 12px 32px -8px rgb(15 23 42 / 0.2);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0a101f;
+  --surface: #111a2e;
+  --surface-muted: #16213a;
+  --surface-tint: #13254a;
+  --fg: #e6edf7;
+  --fg-muted: #9aa8bd;
+  --fg-subtle: #8b99ae;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --accent-on-tint: #93c5fd;
+  --btn: #e6edf7;
+  --btn-hover: #ffffff;
+  --btn-fg: #0a101f;
+  --line: #1e293b;
+  --line-hover: #34466a;
+  --line-strong: #7c8ba1;
+  --success: #4ade80;
+  --success-bg: #0f2a1c;
+  --warning: #fbbf24;
+  --warning-bg: #2a1f0a;
+  --danger: #f87171;
+  --danger-bg: #2a1414;
+
+  /* Shadows don't read on navy; elevation comes from border lightening instead. */
+  --shadow-raised: 0 0 0 transparent;
+  --shadow-toast: 0 12px 32px -8px rgb(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-tint: var(--surface-tint);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-on-tint: var(--accent-on-tint);
+  --color-btn: var(--btn);
+  --color-btn-hover: var(--btn-hover);
+  --color-btn-fg: var(--btn-fg);
+  --color-line: var(--line);
+  --color-line-hover: var(--line-hover);
+  --color-line-strong: var(--line-strong);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+
+  --shadow-raised: var(--shadow-raised);
+  --shadow-toast: var(--shadow-toast);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@theme {
+  /* Type scale */
+  --text-display: clamp(2rem, 3vw + 1rem, 2.75rem);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.025em;
+  --text-display--font-weight: 700;
+  --text-lead: clamp(1rem, 0.4vw + 0.9rem, 1.1875rem);
+  --text-lead--line-height: 1.85;
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+  --text-label--font-weight: 500;
+  --text-title: 1.125rem;
+  --text-title--line-height: 1.4;
+  --text-title--font-weight: 500;
+  --text-mono-sm: 0.9375rem;
+  --text-mono-sm--line-height: 1.75;
+  --text-mono-xs: 0.8125rem;
+  --text-mono-xs--line-height: 1.4;
+  --text-mono-xs--font-weight: 500;
+
+  /* Radii */
+  --radius-key: 6px;
+  --radius-card: 12px;
+
+  /* Layout */
+  --container-page: 64rem;
+  --container-prose: 40rem;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --default-transition-duration: 120ms;
+}
+
+:root {
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 300ms;
+  --header-h: 4rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+
+section[id] {
+  /* Sections carry their own top padding, so only part of the header height is needed. */
+  scroll-margin-top: calc(var(--header-h) - 2rem);
+}
+
+::selection {
+  background: var(--surface-tint);
+  color: var(--accent-on-tint);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Sections and <main> receive focus programmatically (skip link, shortcuts); they aren't controls. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* Expandable project details: animate <details> open/close where supported. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details.reveal::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size var(--dur-slow) var(--ease-out-soft),
+      content-visibility var(--dur-slow) allow-discrete;
+  }
+  details.reveal[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* Name underline draws in once on load. */
+@keyframes underline-draw {
+  from {
+    background-size: 0% 3px;
+  }
+  to {
+    background-size: 100% 3px;
+  }
+}
+
+.name-underline {
+  background-image: linear-gradient(
+    color-mix(in srgb, var(--accent) 60%, transparent),
+    color-mix(in srgb, var(--accent) 60%, transparent)
+  );
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 3px;
+  padding-bottom: 2px;
+  animation: underline-draw 500ms var(--ease-out-soft) 150ms both;
+}
+
+/* Sections fade up as they enter the viewport (CSS-only, content visible without support). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes section-enter {
+      from {
+        opacity: 0;
+        translate: 0 12px;
+      }
+      to {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+    .section-enter {
+      animation: section-enter linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+/* Toast enter animation */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.toast-in {
+  animation: toast-in var(--dur-base) var(--ease-out-soft) both;
+}
+
+/* Key-hint flash when its shortcut fires */
+.key-flash {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+/* Theme switch circular reveal (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .name-underline {
+    animation: none;
+  }
+}
