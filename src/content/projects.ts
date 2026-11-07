@@ -6,6 +6,8 @@ export type Project = {
   slug: string;
   name: string;
   url: string;
+  /** Public source repository, when there is one. */
+  repo?: string;
   /** Hostname shown on the card, e.g. "impactlia.com". */
   domain: string;
   status: ProjectStatus;
@@ -26,6 +28,7 @@ export const projects: Project[] = [
     slug: "impactlia",
     name: "Impactlia",
     url: "https://impactlia.com",
+    repo: "https://github.com/haybraham360/Impactlia",
     domain: "impactlia.com",
     status: "early-access",
     role: "Founder · product & engineering",
@@ -46,6 +49,61 @@ export const projects: Project[] = [
       {
         heading: "Not available yet",
         items: ["Private repositories."],
+      },
+    ],
+  },
+  {
+    slug: "ledger-eval",
+    name: "Ledger-Eval",
+    url: "https://ledger-eval.vercel.app/",
+    repo: "https://github.com/haybraham360/Eval_FinanceSolution",
+    domain: "ledger-eval.vercel.app",
+    status: "live",
+    role: "Built it",
+    period: "2026",
+    summary:
+      "An evaluation framework I built to test how reliable AI models are with money — real financial-engineering and Nigerian tax problems, with every answer graded by code instead of by another AI.",
+    tech: ["react"],
+    details: [
+      {
+        heading: "What it tests",
+        items: [
+          "Financial engineering: payouts, webhooks, FX refunds, wallet repair and settlement reconciliation, where one slip can pay someone twice.",
+          "PostgreSQL reliability: concurrency, locks, isolation levels, and how money and time zones are handled.",
+          "Nigerian tax compliance: applying the Nigeria Tax Act 2025 without being given the law, including rules that override other rules.",
+        ],
+      },
+      {
+        heading: "How it works",
+        items: [
+          "Each of the 12 core tasks is written like a work ticket at a payments company; models answer with no tools and no second attempts.",
+          "Programmatic checkers mark every answer item by item, and are themselves tested against deliberately wrong answers.",
+          "A public explorer shows tasks, scores and real graded mistakes, read straight from the committed state of the GitHub repo.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "genebridge",
+    name: "GeneBridge",
+    url: "https://genebridge-nine.vercel.app/",
+    domain: "genebridge-nine.vercel.app",
+    status: "live",
+    role: "Built it",
+    period: "2026",
+    summary:
+      "A privacy-first, bilingual (Arabic and English) platform that helps individuals and couples understand inherited disease risk, explore their reproductive options and connect with genetic counsellors.",
+    tech: ["nextjs"],
+    details: [
+      {
+        heading: "Key features",
+        items: [
+          "Plain-language explanations of screening results across recessive, dominant and X-linked conditions.",
+          "Couple compatibility view, shown only when both partners consent.",
+          "Inheritance simulator and a family-history map to see where conditions appear.",
+          "Counsellor booking and referral tracking, plus a portal for clinicians.",
+          "Consent controls and an access log; only the interpretation of a result is stored, not raw genetic data.",
+        ],
       },
     ],
   },
