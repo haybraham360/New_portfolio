@@ -25,6 +25,30 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "genebridge",
+    name: "GeneBridge",
+    url: "https://genebridge-nine.vercel.app/",
+    domain: "genebridge-nine.vercel.app",
+    status: "live",
+    role: "Built it",
+    period: "2026",
+    summary:
+      "A privacy-first, bilingual (Arabic and English) platform that helps individuals and couples understand inherited disease risk, explore their reproductive options and connect with genetic counsellors.",
+    tech: ["nextjs"],
+    details: [
+      {
+        heading: "Key features",
+        items: [
+          "Plain-language explanations of screening results across recessive, dominant and X-linked conditions.",
+          "Couple compatibility view, shown only when both partners consent.",
+          "Inheritance simulator and a family-history map to see where conditions appear.",
+          "Counsellor booking and referral tracking, plus a portal for clinicians.",
+          "Consent controls and an access log; only the interpretation of a result is stored, not raw genetic data.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "impactlia",
     name: "Impactlia",
     url: "https://impactlia.com",
@@ -79,30 +103,6 @@ export const projects: Project[] = [
           "Each of the 12 core tasks is written like a work ticket at a payments company; models answer with no tools and no second attempts.",
           "Programmatic checkers mark every answer item by item, and are themselves tested against deliberately wrong answers.",
           "A public explorer shows tasks, scores and real graded mistakes, read straight from the committed state of the GitHub repo.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "genebridge",
-    name: "GeneBridge",
-    url: "https://genebridge-nine.vercel.app/",
-    domain: "genebridge-nine.vercel.app",
-    status: "live",
-    role: "Built it",
-    period: "2026",
-    summary:
-      "A privacy-first, bilingual (Arabic and English) platform that helps individuals and couples understand inherited disease risk, explore their reproductive options and connect with genetic counsellors.",
-    tech: ["nextjs"],
-    details: [
-      {
-        heading: "Key features",
-        items: [
-          "Plain-language explanations of screening results across recessive, dominant and X-linked conditions.",
-          "Couple compatibility view, shown only when both partners consent.",
-          "Inheritance simulator and a family-history map to see where conditions appear.",
-          "Counsellor booking and referral tracking, plus a portal for clinicians.",
-          "Consent controls and an access log; only the interpretation of a result is stored, not raw genetic data.",
         ],
       },
     ],
