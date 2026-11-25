@@ -24,7 +24,7 @@ export function TechPill({ id, size = "md" }: { id: TechId; size?: "sm" | "md" }
   return (
     <li
       className={cn(
-        "inline-flex items-center gap-2 rounded-full bg-surface-muted font-mono text-fg",
+        "inline-flex items-center gap-2 border-2 border-ink bg-surface font-mono text-fg",
         size === "md" ? "px-3.5 py-1.5 text-mono-xs" : "px-2.5 py-1 text-xs",
       )}
     >
@@ -36,7 +36,7 @@ export function TechPill({ id, size = "md" }: { id: TechId; size?: "sm" | "md" }
 
 export function InlineTechChip({ id }: { id: TechId }) {
   return (
-    <span className="inline-flex translate-y-[-1px] items-center gap-1.5 rounded-full bg-surface-tint px-2.5 py-0.5 align-middle text-[0.92em] leading-normal text-accent-on-tint">
+    <span className="inline-flex translate-y-[-1px] items-center gap-1.5 border-2 border-ink bg-surface px-2 py-0 align-middle font-mono text-[0.88em] leading-normal font-semibold text-fg">
       <TechLogo id={id} size={14} />
       {tech[id].label}
     </span>

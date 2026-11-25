@@ -13,12 +13,12 @@ async function getYear() {
 export async function SiteFooter() {
   const year = await getYear();
   const linkClass =
-    "inline-flex size-11 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg";
+    "inline-flex size-11 items-center justify-center border-2 border-transparent text-btn-fg transition-colors hover:border-btn-fg";
 
   return (
-    <footer className="border-t border-line">
+    <footer className="border-t-3 border-ink bg-btn text-btn-fg">
       <div className="mx-auto flex max-w-page flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <p className="font-mono text-mono-xs font-normal text-fg-subtle">
+        <p className="font-display text-sm tracking-wide">
           © {year} {profile.name}
         </p>
         <div className="-ml-3 flex items-center gap-1 sm:ml-0">

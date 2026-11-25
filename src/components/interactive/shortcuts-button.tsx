@@ -12,7 +12,7 @@ export function ShortcutsButton() {
       aria-label="Keyboard shortcuts"
       aria-keyshortcuts="Shift+/"
       title="Keyboard shortcuts (?)"
-      className="hidden size-11 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg pointer-fine:inline-flex"
+      className="hidden size-11 items-center justify-center border-2 border-transparent text-btn-fg transition-colors hover:border-btn-fg pointer-fine:inline-flex"
     >
       <Keyboard size={18} />
     </button>

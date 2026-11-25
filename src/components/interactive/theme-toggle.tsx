@@ -20,7 +20,7 @@ export function ThemeToggle() {
       aria-label={label}
       aria-keyshortcuts="T"
       title={`${label} (T)`}
-      className="group relative inline-flex size-11 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+      className="brut-sm brut-press group relative inline-flex size-11 items-center justify-center bg-surface text-fg"
     >
       <Sun
         size={18}

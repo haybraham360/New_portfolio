@@ -37,20 +37,20 @@ function useActiveSection() {
 export function NavLinks() {
   const active = useActiveSection();
   return (
-    <nav aria-label="Main" className="hidden md:block">
+    <nav aria-label="Main" className="hidden lg:block">
       <ul className="flex items-center gap-1">
         {navSections.map(({ id, label }) => (
           <li key={id}>
             <a
               href={`#${id}`}
               aria-current={active === id ? "true" : undefined}
-              className="relative inline-flex h-11 items-center rounded-full px-3 text-sm text-fg-muted transition-colors hover:text-fg aria-[current]:text-fg"
+              className="relative inline-flex h-11 items-center px-3 text-base font-bold text-fg transition-colors hover:text-accent"
             >
               {label}
               <span
                 aria-hidden="true"
                 className={cn(
-                  "absolute inset-x-3 bottom-2 h-0.5 origin-left rounded-full bg-accent transition-transform duration-200",
+                  "absolute inset-x-3 bottom-1.5 h-1 origin-left rounded-full bg-[var(--swoosh)] transition-transform duration-200",
                   active === id ? "scale-x-100" : "scale-x-0",
                 )}
               />
@@ -74,7 +74,7 @@ export function MobileMenu() {
       setOpen(false);
       buttonRef.current?.focus();
     };
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
     const onResize = () => desktop.matches && setOpen(false);
     window.addEventListener("keydown", onKeyDown);
     desktop.addEventListener("change", onResize);
@@ -85,7 +85,7 @@ export function MobileMenu() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         ref={buttonRef}
         type="button"
@@ -93,7 +93,7 @@ export function MobileMenu() {
         aria-controls="mobile-menu"
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex size-11 items-center justify-center rounded-full text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+        className="brut-sm brut-press inline-flex size-11 items-center justify-center bg-surface text-fg"
       >
         {open ? <Close size={20} /> : <Menu size={20} />}
       </button>
@@ -102,7 +102,7 @@ export function MobileMenu() {
         id="mobile-menu"
         aria-label="Main"
         hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-line bg-bg shadow-raised"
+        className="absolute inset-x-0 top-full border-b-3 border-ink bg-bg"
       >
         <ul className="mx-auto flex max-w-page flex-col px-4 py-3 sm:px-6">
           {navSections.map(({ id, label }) => (
@@ -110,7 +110,7 @@ export function MobileMenu() {
               <a
                 href={`#${id}`}
                 onClick={() => setOpen(false)}
-                className="flex h-12 items-center rounded-lg px-3 font-mono text-base text-fg transition-colors hover:bg-surface-muted"
+                className="flex h-12 items-center px-3 font-display text-lg text-fg transition-colors hover:bg-card-yellow"
               >
                 {label}
               </a>

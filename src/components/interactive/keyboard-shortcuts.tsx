@@ -133,17 +133,17 @@ export function KeyboardShortcuts() {
       role="dialog"
       aria-modal="false"
       aria-labelledby="shortcuts-title"
-      className="toast-in fixed bottom-6 left-6 z-50 hidden w-80 rounded-card border border-line bg-surface p-5 shadow-toast pointer-fine:block"
+      className="brut toast-in fixed bottom-6 left-6 z-50 hidden w-80 bg-surface p-5 pointer-fine:block"
     >
       <div className="flex items-center justify-between">
-        <h2 id="shortcuts-title" className="text-label text-fg-subtle uppercase">
+        <h2 id="shortcuts-title" className="font-display text-base text-fg">
           Keyboard shortcuts
         </h2>
         <button
           type="button"
           onClick={() => setHelpOpen(false)}
           aria-label="Close keyboard shortcuts"
-          className="-mr-2 inline-flex size-9 items-center justify-center rounded-full text-fg-subtle hover:bg-surface-muted hover:text-fg"
+          className="-mr-2 inline-flex size-9 items-center justify-center text-fg hover:bg-card-yellow"
         >
           <Close size={14} />
         </button>
@@ -152,7 +152,7 @@ export function KeyboardShortcuts() {
         {shortcuts.map((s) => (
           <div key={s.key} className="flex items-center gap-3 text-sm">
             <dt>
-              <kbd className="inline-flex size-6 items-center justify-center rounded-key border border-line bg-surface-muted font-mono text-mono-xs text-fg">
+              <kbd className="inline-flex size-7 items-center justify-center rounded-key border-2 border-ink bg-card-yellow font-mono text-mono-xs font-bold text-fg">
                 {s.key}
               </kbd>
             </dt>
@@ -160,7 +160,7 @@ export function KeyboardShortcuts() {
           </div>
         ))}
       </dl>
-      <div className="mt-5 flex items-center justify-between border-t border-line pt-4 text-sm">
+      <div className="mt-5 flex items-center justify-between border-t-2 border-dashed border-line-soft pt-4 text-sm">
         <span id="shortcuts-toggle-label" className="text-fg-muted">
           Single-key shortcuts
         </span>
@@ -170,9 +170,9 @@ export function KeyboardShortcuts() {
           aria-checked={!disabled}
           aria-labelledby="shortcuts-toggle-label"
           onClick={toggleDisabled}
-          className="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border border-line-strong bg-surface-muted transition-colors aria-checked:border-transparent aria-checked:bg-accent"
+          className="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border-2 border-ink bg-surface-muted transition-colors aria-checked:bg-[var(--swoosh)]"
         >
-          <span className="ml-0.5 size-4.5 rounded-full bg-surface shadow-sm transition-transform in-aria-checked:translate-x-5" />
+          <span className="ml-0.5 size-4 rounded-full border-2 border-ink bg-surface transition-transform in-aria-checked:translate-x-5" />
         </button>
       </div>
       {disabled && <p className="mt-2 text-xs text-fg-subtle">Off. Use the footer link to turn them back on.</p>}

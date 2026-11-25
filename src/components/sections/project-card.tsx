@@ -5,15 +5,15 @@ import type { Project, ProjectStatus } from "@/content/projects";
 import { cn } from "@/lib/cn";
 
 const statusStyle: Record<ProjectStatus, { label: string; className: string }> = {
-  "in-progress": { label: "In progress", className: "bg-surface-muted text-fg-muted" },
-  "early-access": { label: "Early access", className: "bg-surface-tint text-accent-on-tint" },
-  live: { label: "Live", className: "bg-success-bg text-success" },
+  "in-progress": { label: "In progress", className: "bg-surface-muted text-fg" },
+  "early-access": { label: "Early access", className: "bg-card-yellow text-fg" },
+  live: { label: "Live", className: "bg-card-mint text-fg" },
 };
 
 function StatusPill({ status, note }: { status: ProjectStatus; note?: string }) {
   const { label, className } = statusStyle[status];
   return (
-    <span className={cn("inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-mono text-mono-xs", className)}>
+    <span className={cn("inline-flex items-center gap-1.5 border-2 border-ink px-2.5 py-0.5 text-xs font-bold tracking-wide uppercase", className)}>
       <span aria-hidden="true" className="size-1.5 rounded-full bg-current" />
       {label}
       {note && <span className="opacity-80">· {note}</span>}
@@ -30,37 +30,50 @@ function initials(name: string) {
     .join("");
 }
 
-export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
+const markColors = ["bg-[#b9e0f7]", "bg-[#f6c445]", "bg-[#f8d3e4]", "bg-[#c8f0d4]"];
+
+export function ProjectCard({
+  project,
+  index = 0,
+  featured = false,
+}: {
+  project: Project;
+  index?: number;
+  featured?: boolean;
+}) {
   const { name, url, repo, domain, status, statusNote, role, period, summary, tech, details, note } = project;
 
   return (
     <article
       aria-labelledby={`${project.slug}-title`}
       className={cn(
-        "group/card flex flex-col rounded-card border border-line bg-surface p-5 transition-[border-color,box-shadow,translate] duration-200 ease-out-soft sm:p-6",
-        "focus-within:border-line-hover hover:border-line-hover hover:shadow-raised pointer-fine:hover:-translate-y-0.5",
-        featured && "md:col-span-2",
+        "brut group/card flex flex-col p-5 transition-[box-shadow,translate] duration-200 ease-out-soft sm:p-6",
+        "pointer-fine:hover:-translate-x-0.5 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-[9px_9px_0_var(--shadow-ink)]",
+        featured ? "bg-card-sky md:col-span-2" : "bg-surface",
       )}
     >
       <div className="flex flex-wrap items-start gap-x-3 gap-y-3">
         <span
           aria-hidden="true"
-          className="inline-flex size-10 shrink-0 items-center justify-center rounded-card bg-surface-muted font-mono text-sm font-semibold text-fg transition-colors group-hover/card:bg-surface-tint group-hover/card:text-accent-on-tint"
+          className={cn(
+            "inline-flex size-12 shrink-0 items-center justify-center border-2 border-ink font-display text-base text-[#141414] transition-transform group-hover/card:-rotate-6",
+            markColors[index % markColors.length],
+          )}
         >
           {initials(name)}
         </span>
         <div className="min-w-0 flex-1">
-          <h3 id={`${project.slug}-title`} className="font-mono text-title text-fg">
+          <h3 id={`${project.slug}-title`} className="scroll-mt-32 font-display text-2xl leading-tight text-fg">
             {name}
           </h3>
-          <p className="font-mono text-mono-xs font-normal text-fg-subtle">{domain}</p>
+          <p className="mt-0.5 font-mono text-mono-xs font-normal text-fg-subtle">{domain}</p>
         </div>
         <StatusPill status={status} note={statusNote} />
       </div>
 
       <div className={cn("mt-5 flex-1", featured && "md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10")}>
         <div>
-          <p className="max-w-prose font-mono text-mono-sm text-fg-muted">{summary}</p>
+          <p className="max-w-prose text-base leading-relaxed text-fg-muted">{summary}</p>
 
           {(role || period || note) && (
             <dl className="mt-4 space-y-1 text-sm">
@@ -94,9 +107,9 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
         {details && (
           <details
             open={featured}
-            className="reveal group/details mt-5 border-t border-line pt-1 md:mt-0 md:border-t-0 md:pt-0"
+            className="reveal group/details mt-5 border-t-2 border-dashed border-line-soft pt-1 md:mt-0 md:border-t-0 md:pt-0"
           >
-            <summary className="-mx-2 flex h-11 cursor-pointer list-none items-center gap-1.5 rounded-lg px-2 text-sm font-medium text-fg-muted transition-colors select-none hover:text-fg [&::-webkit-details-marker]:hidden">
+            <summary className="-mx-2 flex h-11 cursor-pointer list-none items-center gap-1.5 px-2 text-sm font-bold text-fg transition-colors select-none hover:text-accent [&::-webkit-details-marker]:hidden">
               <ChevronDown
                 size={16}
                 className="transition-transform duration-200 group-open/details:rotate-180"
@@ -107,11 +120,11 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
             <div className="space-y-4 pt-2 pb-1">
               {details.map((block) => (
                 <div key={block.heading}>
-                  <h4 className="text-label text-fg-subtle uppercase">{block.heading}</h4>
+                  <h4 className="text-label font-bold text-fg uppercase">{block.heading}</h4>
                   <ul className="mt-2 space-y-1.5 text-[0.9375rem] leading-relaxed text-fg-muted">
                     {block.items.map((item) => (
                       <li key={item} className="flex gap-2.5">
-                        <span aria-hidden="true" className="mt-[0.6em] size-1 shrink-0 rounded-full bg-line-strong" />
+                        <span aria-hidden="true" className="mt-[0.55em] size-1.5 shrink-0 bg-[var(--swoosh)]" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -124,11 +137,11 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
       </div>
 
       {(url || repo) && (
-        <div className="mt-6 flex flex-wrap items-center gap-2">
+        <div className="mt-6 flex flex-wrap items-center gap-3">
           {url && (
             <ExternalLink
               href={url}
-              className="group/link inline-flex h-11 items-center gap-1.5 rounded-full bg-surface-muted px-4 text-sm font-medium text-fg transition-colors hover:bg-btn hover:text-btn-fg"
+              className="brut-sm brut-press group/link inline-flex h-11 items-center gap-1.5 bg-btn px-4 text-sm font-bold text-btn-fg"
             >
               View live site<span className="sr-only">: {name}</span>
               <ArrowUpRight
@@ -140,7 +153,7 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
           {repo && (
             <ExternalLink
               href={repo}
-              className="inline-flex h-11 items-center gap-1.5 rounded-full border border-line px-4 text-sm font-medium text-fg-muted transition-colors hover:border-line-hover hover:text-fg"
+              className="brut-sm brut-press inline-flex h-11 items-center gap-1.5 bg-surface px-4 text-sm font-bold text-fg"
             >
               <GitHubIcon size={15} aria-hidden="true" />
               Source on GitHub<span className="sr-only">: {name}</span>

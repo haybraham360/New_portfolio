@@ -7,7 +7,7 @@ export function About() {
       label="About"
       intro="I like hard problems, and building AI systems you can actually measure and trust."
     >
-      <div className="max-w-prose space-y-5 text-base leading-[1.7] text-fg-muted">
+      <div className="brut max-w-[46rem] -rotate-[0.6deg] space-y-5 bg-surface p-6 text-base leading-[1.75] text-fg-muted sm:p-8">
         <p>
           I&rsquo;m an AI and software engineer. Since 2022 I&rsquo;ve shipped production web applications in
           TypeScript, Node.js, React, Next.js and Python for businesses, startups and product teams: interfaces,

@@ -51,8 +51,8 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 }
 
 const toneStyles: Record<Tone, { icon: ReactNode; className: string }> = {
-  success: { icon: <Check size={14} />, className: "bg-success-bg text-success" },
-  info: { icon: <Sparkle size={14} />, className: "bg-surface-tint text-accent-on-tint" },
+  success: { icon: <Check size={14} />, className: "bg-card-mint text-fg" },
+  info: { icon: <Sparkle size={14} />, className: "bg-card-pink text-fg" },
   error: { icon: <Close size={14} />, className: "bg-danger-bg text-danger" },
 };
 
@@ -77,20 +77,20 @@ function ToastCard({ toast, onDismiss }: { toast: ToastItem; onDismiss: (id: num
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
       onKeyDown={(e) => e.key === "Escape" && onDismiss(id)}
-      className="toast-in pointer-events-auto flex items-start gap-3 rounded-card border border-line bg-surface p-3.5 shadow-toast"
+      className="brut toast-in pointer-events-auto flex items-start gap-3 bg-surface p-3.5"
     >
-      <span className={cn("mt-0.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full", tone.className)}>
+      <span className={cn("mt-0.5 inline-flex size-7 shrink-0 items-center justify-center border-2 border-ink", tone.className)}>
         {tone.icon}
       </span>
       <div className="min-w-0 flex-1 pt-0.5">
-        <p className="text-sm font-medium text-fg">{toast.title}</p>
+        <p className="text-sm font-bold text-fg">{toast.title}</p>
         {toast.body && <p className="mt-0.5 font-mono text-xs leading-relaxed wrap-break-word text-fg-muted">{toast.body}</p>}
       </div>
       <button
         type="button"
         onClick={() => onDismiss(id)}
         aria-label="Dismiss notification"
-        className="-m-2 inline-flex size-10 shrink-0 items-center justify-center rounded-full text-fg-subtle transition-colors hover:bg-surface-muted hover:text-fg"
+        className="-m-2 inline-flex size-10 shrink-0 items-center justify-center text-fg transition-colors hover:bg-card-yellow"
       >
         <Close size={14} />
       </button>
