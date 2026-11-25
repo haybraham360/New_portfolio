@@ -15,6 +15,7 @@ export function Education() {
             </p>
             <h3 className="mt-2 font-mono text-title text-fg">{item.degree}</h3>
             <p className="mt-0.5 text-sm text-fg-muted">{item.school}</p>
+            {item.detail && <p className="mt-3 text-sm leading-relaxed text-fg-subtle">{item.detail}</p>}
           </li>
         ))}
       </ul>

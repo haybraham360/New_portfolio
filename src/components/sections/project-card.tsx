@@ -5,6 +5,7 @@ import type { Project, ProjectStatus } from "@/content/projects";
 import { cn } from "@/lib/cn";
 
 const statusStyle: Record<ProjectStatus, { label: string; className: string }> = {
+  "in-progress": { label: "In progress", className: "bg-surface-muted text-fg-muted" },
   "early-access": { label: "Early access", className: "bg-surface-tint text-accent-on-tint" },
   live: { label: "Live", className: "bg-success-bg text-success" },
 };
@@ -122,27 +123,31 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
         )}
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-2">
-        <ExternalLink
-          href={url}
-          className="group/link inline-flex h-11 items-center gap-1.5 rounded-full bg-surface-muted px-4 text-sm font-medium text-fg transition-colors hover:bg-btn hover:text-btn-fg"
-        >
-          View live site<span className="sr-only">: {name}</span>
-          <ArrowUpRight
-            size={15}
-            className="transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
-          />
-        </ExternalLink>
-        {repo && (
-          <ExternalLink
-            href={repo}
-            className="inline-flex h-11 items-center gap-1.5 rounded-full border border-line px-4 text-sm font-medium text-fg-muted transition-colors hover:border-line-hover hover:text-fg"
-          >
-            <GitHubIcon size={15} aria-hidden="true" />
-            Source on GitHub<span className="sr-only">: {name}</span>
-          </ExternalLink>
-        )}
-      </div>
+      {(url || repo) && (
+        <div className="mt-6 flex flex-wrap items-center gap-2">
+          {url && (
+            <ExternalLink
+              href={url}
+              className="group/link inline-flex h-11 items-center gap-1.5 rounded-full bg-surface-muted px-4 text-sm font-medium text-fg transition-colors hover:bg-btn hover:text-btn-fg"
+            >
+              View live site<span className="sr-only">: {name}</span>
+              <ArrowUpRight
+                size={15}
+                className="transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+              />
+            </ExternalLink>
+          )}
+          {repo && (
+            <ExternalLink
+              href={repo}
+              className="inline-flex h-11 items-center gap-1.5 rounded-full border border-line px-4 text-sm font-medium text-fg-muted transition-colors hover:border-line-hover hover:text-fg"
+            >
+              <GitHubIcon size={15} aria-hidden="true" />
+              Source on GitHub<span className="sr-only">: {name}</span>
+            </ExternalLink>
+          )}
+        </div>
+      )}
     </article>
   );
 }

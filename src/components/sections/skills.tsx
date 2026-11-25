@@ -4,7 +4,7 @@ import { focusAreas, skillGroups } from "@/content/skills";
 
 export function Skills() {
   return (
-    <Section id="skills" label="Skills" intro="The tools and platforms I use in product and client work:">
+    <Section id="skills" label="Skills" intro="The tools I use to build, evaluate and ship AI and web products:">
       <dl className="space-y-6">
         {skillGroups.map((group) => (
           <div key={group.label} className="grid gap-3 sm:grid-cols-[11rem_1fr] sm:items-baseline sm:gap-6">

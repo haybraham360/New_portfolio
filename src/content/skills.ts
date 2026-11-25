@@ -1,18 +1,24 @@
 import type { TechId } from "@/lib/tech";
 
-/** Technologies confirmed by the CV or by the owner for specific projects. */
+/** Technologies from the résumé (AI Engineer, 2026). */
 export const skillGroups: { label: string; tech: TechId[] }[] = [
-  { label: "Languages & frontend", tech: ["typescript", "javascript", "react", "nextjs"] },
-  { label: "Backend & data", tech: ["nodejs", "rest", "supabase"] },
+  { label: "AI & LLM engineering", tech: ["claude", "openai", "rag", "pgvector", "agents", "mcp", "evals"] },
+  { label: "Languages", tech: ["python", "typescript", "javascript", "sql"] },
+  { label: "Backend & data", tech: ["fastapi", "nodejs", "rest", "postgresql", "supabase"] },
+  { label: "Frontend", tech: ["react", "nextjs", "tailwind", "streamlit"] },
+  { label: "Machine learning", tech: ["tensorflow", "scikitlearn", "pandas", "numpy"] },
+  { label: "DevOps & testing", tech: ["docker", "kubernetes", "githubactions", "vercel", "pytest"] },
   { label: "Platforms", tech: ["wordpress", "shopify", "internetcomputer"] },
 ];
 
-/** Areas of work described in the CV. */
+/** Areas of work described in the résumé. */
 export const focusAreas = [
-  "Responsive interfaces",
-  "API & third-party integrations",
-  "Payment gateways",
-  "Booking & scheduling",
+  "Retrieval-augmented generation",
+  "Embeddings & reranking",
+  "Structured outputs",
+  "Prompt engineering",
+  "Time-series & backtesting",
+  "Payments & booking flows",
   "Authentication",
-  "Real-time features",
+  "Code review & regression checks",
 ] as const;

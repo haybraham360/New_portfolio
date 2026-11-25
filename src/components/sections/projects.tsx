@@ -7,7 +7,7 @@ export function Projects() {
     <Section
       id="projects"
       label="Selected projects"
-      intro="My own products, plus websites I've worked on for businesses in the US and Lithuania."
+      intro="My own AI and developer products, plus websites I've built for businesses in the US and Lithuania."
     >
       <div className="grid gap-4 md:grid-cols-2 md:gap-5">
         {projects.map((project, i) => (

@@ -1,14 +1,15 @@
 import type { TechId } from "@/lib/tech";
 
-export type ProjectStatus = "early-access" | "live";
+export type ProjectStatus = "in-progress" | "early-access" | "live";
 
 export type Project = {
   slug: string;
   name: string;
-  url: string;
+  /** Live site, when there is one. */
+  url?: string;
   /** Public source repository, when there is one. */
   repo?: string;
-  /** Hostname shown on the card, e.g. "impactlia.com". */
+  /** Hostname shown on the card, e.g. "impactlia.com"; or a short subtitle when there is no live site. */
   domain: string;
   status: ProjectStatus;
   /** Short qualifier next to the status, e.g. "Ongoing". Only when accurate. */
@@ -87,7 +88,7 @@ export const projects: Project[] = [
     period: "2026",
     summary:
       "An evaluation framework I built to test how reliable AI models are with money — real financial-engineering and Nigerian tax problems, with every answer graded by code instead of by another AI.",
-    tech: ["react"],
+    tech: ["react", "evals"],
     details: [
       {
         heading: "What it tests",
@@ -103,6 +104,33 @@ export const projects: Project[] = [
           "Each of the 12 core tasks is written like a work ticket at a payments company; models answer with no tools and no second attempts.",
           "Programmatic checkers mark every answer item by item, and are themselves tested against deliberately wrong answers.",
           "A public explorer shows tasks, scores and real graded mistakes, read straight from the committed state of the GitHub repo.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "filinglens",
+    name: "FilingLens",
+    domain: "AI analyst for SEC filings",
+    status: "in-progress",
+    role: "Building it",
+    period: "2026",
+    summary:
+      "A RAG system and tool-calling agent over SEC 10-K and 10-Q filings that answers questions with verified source citations — and takes every figure from deterministic Python tools, never from the model.",
+    tech: ["python", "fastapi", "postgresql", "pgvector", "claude", "docker", "githubactions"],
+    details: [
+      {
+        heading: "What I'm building",
+        items: [
+          "Hybrid retrieval: pgvector semantic search plus Postgres full-text search, merged with reciprocal rank fusion.",
+          "A tool-calling agent that computes financial ratios from SEC XBRL data and compares risk-factor sections year over year.",
+          "Evals on a hand-verified golden set plus a FinanceBench subset, measuring retrieval recall, correctness and citation validity.",
+        ],
+      },
+      {
+        heading: "Research extension",
+        items: [
+          "Replicating the “Lazy Prices” study (Journal of Finance, 2020): text-similarity and embedding signals, quintile portfolios and Fama-French factor regressions, with walk-forward, lookahead-free testing.",
         ],
       },
     ],

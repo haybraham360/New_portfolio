@@ -1,4 +1,5 @@
 import { ThemeToggle } from "@/components/interactive/theme-toggle";
+import { FileText } from "@/components/ui/icons";
 import { profile } from "@/content/profile";
 import { MobileMenu, NavLinks } from "./site-nav";
 
@@ -24,6 +25,16 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-1">
           <NavLinks />
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex h-11 min-w-11 items-center justify-center gap-1.5 rounded-full px-3 text-sm text-fg-muted transition-colors hover:text-fg"
+          >
+            <FileText size={16} />
+            <span className="max-sm:sr-only">Résumé</span>
+            <span className="sr-only"> (PDF, opens in a new tab)</span>
+          </a>
           <ThemeToggle />
           <MobileMenu />
         </div>

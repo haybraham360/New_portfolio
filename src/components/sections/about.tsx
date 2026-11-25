@@ -5,22 +5,27 @@ export function About() {
     <Section
       id="about"
       label="About"
-      intro="I like solving complex problems and building products that work well and are easy to use."
+      intro="I like hard problems, and building AI systems you can actually measure and trust."
     >
       <div className="max-w-prose space-y-5 text-base leading-[1.7] text-fg-muted">
         <p>
-          I&rsquo;m a full-stack developer working mainly with React, Next.js, TypeScript and Node.js. Since 2022
-          I&rsquo;ve built websites and web applications for businesses, startups and product teams: interfaces and
-          site architecture, API and third-party integrations, payments, booking and scheduling.
+          I&rsquo;m an AI and software engineer. Since 2022 I&rsquo;ve shipped production web applications in
+          TypeScript, Node.js, React, Next.js and Python for businesses, startups and product teams: interfaces,
+          APIs and third-party integrations, payments, booking and scheduling.
+        </p>
+        <p>
+          Now I focus on LLM-powered applications: retrieval-augmented generation, tool-calling agents, and
+          evaluation that grades answers with code rather than with another model. I containerise and deploy
+          services with Docker and Kubernetes, and care a lot about debugging, testing and clear technical writing.
         </p>
         <p>
           I also enjoy the product side. I manage the digital product at Wellness Works Counseling as well as
-          developing it, co-founded CasaSwap, a housing platform on the Internet Computer blockchain, and I&rsquo;m now
-          building my own developer tool, Impactlia.
+          developing it, and I&rsquo;m building my own developer tool, Impactlia.
         </p>
         <p>
-          My background is in engineering: a BEng in Computer Engineering, and I&rsquo;m currently studying for an MSc
-          in Financial Engineering.
+          My background is in engineering: a BEng in Computer Engineering, and I&rsquo;m studying for an MS in
+          Financial Engineering at WorldQuant University, with coursework in machine learning, deep learning and
+          econometrics that brings quantitative rigour to the AI systems I build.
         </p>
       </div>
     </Section>

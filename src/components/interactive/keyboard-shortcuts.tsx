@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Close } from "@/components/ui/icons";
+import { profile } from "@/content/profile";
 import { getTheme, prefersReducedMotion, setTheme } from "@/lib/theme";
 import { useToast } from "./toast-provider";
 import { useCopyEmail } from "./use-copy-email";
@@ -14,6 +15,7 @@ const DISCOVERED_KEY = "shortcuts-discovered";
 const shortcuts = [
   { key: "P", action: "Jump to projects" },
   { key: "C", action: "Jump to contact" },
+  { key: "R", action: "Open résumé (PDF)" },
   { key: "E", action: "Copy email address" },
   { key: "T", action: "Switch day / night theme" },
   { key: "?", action: "Show or hide this list" },
@@ -60,7 +62,7 @@ export function jumpToSection(id: string) {
 }
 
 /**
- * Single-key shortcuts (P, C, E, T, ?) shown as key hints on buttons. They are ignored while typing
+ * Single-key shortcuts (P, C, R, E, T, ?) shown as key hints on buttons. They are ignored while typing
  * or when a modifier is held, and can be switched off from the help panel (WCAG 2.1.4).
  */
 export function KeyboardShortcuts() {
@@ -106,6 +108,7 @@ export function KeyboardShortcuts() {
       const actions: Record<string, () => void> = {
         p: () => jumpToSection("projects"),
         c: () => jumpToSection("contact"),
+        r: () => void window.open(profile.resume, "_blank", "noopener"),
         e: () => void copyEmail(),
         t: () => setTheme(getTheme() === "dark" ? "light" : "dark"),
         "?": () => setHelpOpen((open) => !open),

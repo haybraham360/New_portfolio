@@ -1,6 +1,6 @@
 import { CopyEmailButton } from "@/components/interactive/copy-email-button";
 import { ExternalLink } from "@/components/ui/external-link";
-import { ArrowUpRight, GitHubIcon, LinkedInIcon, Mail } from "@/components/ui/icons";
+import { ArrowUpRight, Download, FileText, GitHubIcon, LinkedInIcon, Mail } from "@/components/ui/icons";
 import { Section } from "@/components/ui/section";
 import { profile } from "@/content/profile";
 
@@ -32,6 +32,25 @@ export function Contact() {
             Send an email
           </a>
           <CopyEmailButton />
+        </div>
+
+        <div className="mt-8 border-t border-line pt-6">
+          <p className="text-sm text-fg-subtle">Résumé</p>
+          <ul className="mt-3 flex flex-wrap gap-3">
+            <li>
+              <a href={profile.resume} target="_blank" rel="noopener" className={profileLink}>
+                <FileText size={16} />
+                View résumé
+                <span className="sr-only"> (PDF, opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a href={profile.resume} download className={profileLink}>
+                <Download size={16} />
+                Download PDF
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div className="mt-8 border-t border-line pt-6">

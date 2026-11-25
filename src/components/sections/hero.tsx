@@ -1,4 +1,4 @@
-import { ArrowDown, Mail } from "@/components/ui/icons";
+import { ArrowDown, FileText, Mail } from "@/components/ui/icons";
 import { KeyHint } from "@/components/ui/key-hint";
 import { InlineTechChip } from "@/components/ui/tech-pill";
 import { profile } from "@/content/profile";
@@ -16,10 +16,10 @@ export function Hero() {
       </h1>
 
       <div className="mt-7 max-w-[46rem] space-y-3 font-mono text-lead text-fg-muted">
-        <p className="text-fg">I build practical web products, end to end — for teams and for clients.</p>
+        <p className="text-fg">I build and evaluate LLM-powered applications — and the production software around them.</p>
         <p>
-          Mostly with <InlineTechChip id="react" /> and <InlineTechChip id="nextjs" /> up front, and Node.js, APIs,
-          payments and scheduling behind them.
+          Mostly <InlineTechChip id="python" /> and <InlineTechChip id="typescript" />: RAG, tool-calling agents and
+          code-graded evals, shipped with Docker and Kubernetes on top of 3+ years of Next.js and Node.js work.
         </p>
         <p>I&rsquo;m also the founder of Impactlia, a tool that shows what a code change could affect.</p>
       </div>
@@ -42,6 +42,18 @@ export function Hero() {
           <KeyHint k="c" className="border-fg/25" />
           Contact me
           <Mail size={16} className="pointer-fine:hidden" />
+        </a>
+        <a
+          href={profile.resume}
+          target="_blank"
+          rel="noopener"
+          aria-keyshortcuts="R"
+          className="inline-flex h-12 items-center gap-2.5 rounded-full border border-line bg-surface px-5 text-fg transition-[background-color,translate] hover:bg-surface-muted active:translate-y-px"
+        >
+          <KeyHint k="r" className="border-fg/25" />
+          View résumé
+          <FileText size={16} className="pointer-fine:hidden" />
+          <span className="sr-only"> (PDF, opens in a new tab)</span>
         </a>
       </div>
     </section>

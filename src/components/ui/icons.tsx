@@ -67,6 +67,19 @@ export const Mail = (p: IconProps) => (
   </Stroke>
 );
 
+export const FileText = (p: IconProps) => (
+  <Stroke {...p}>
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+    <path d="M14 2v6h6M8 13h8M8 17h5" />
+  </Stroke>
+);
+
+export const Download = (p: IconProps) => (
+  <Stroke {...p}>
+    <path d="M12 3v12M7 10l5 5 5-5M5 21h14" />
+  </Stroke>
+);
+
 export const Menu = (p: IconProps) => (
   <Stroke {...p}>
     <path d="M4 7h16M4 12h16M4 17h16" />
