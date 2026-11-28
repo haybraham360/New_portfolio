@@ -35,7 +35,7 @@ export const projects: Project[] = [
     period: "2026",
     summary:
       "A privacy-first, bilingual (Arabic and English) platform that helps individuals and couples understand inherited disease risk, explore their reproductive options and connect with genetic counsellors.",
-    tech: ["nextjs"],
+    tech: ["nextjs", "react", "typescript", "tailwind", "supabase", "claude", "vercel", "playwright", "vitest"],
     details: [
       {
         heading: "Key features",

@@ -22,6 +22,7 @@ import {
   siTensorflow,
   siTypescript,
   siVercel,
+  siVitest,
   siWordpress,
   type SimpleIcon,
 } from "simple-icons";
@@ -56,6 +57,8 @@ export type TechId =
   | "githubactions"
   | "vercel"
   | "pytest"
+  | "playwright"
+  | "vitest"
   | "wordpress"
   | "shopify"
   | "internetcomputer";
@@ -92,6 +95,8 @@ export const tech: Record<TechId, Tech> = {
   githubactions: { label: "GitHub Actions", icon: siGithubactions },
   vercel: { label: "Vercel", icon: siVercel },
   pytest: { label: "pytest", icon: siPytest },
+  playwright: { label: "Playwright" },
+  vitest: { label: "Vitest", icon: siVitest },
   wordpress: { label: "WordPress", icon: siWordpress },
   shopify: { label: "Shopify", icon: siShopify },
   internetcomputer: { label: "Internet Computer", icon: siInternetcomputer },
